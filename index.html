@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html>
-<title>Hello Strapdown</title>
-
-<xmp theme="Simplex" style="display:none;">
+    <head>
+        <title>Hello Markdown</title>
+        <link rel="stylesheet" href="css/vs.css">
+        <script src="scripts/marked.min.js"></script> 
+        <script src="scripts/highlight.pack.js"></script>
+    </head>
+    
+    <body>
+<xmp>
 # Markdown text goes in here
 
 ## Chapter 1
@@ -18,14 +24,79 @@ cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non pr
 culpa qui officia deserunt mollit anim id est laborum.
 
 ## Chapter 3
+## C# #
 ```cs
-public string Test()
+/// <summary>Test</summary>
+public void Test(int i)
 {
-    int i = 0;
-    return string.Format("The number is {0}", i);
+    // Comment
+    string a = "text";
+    return i;
 }
 ```
 </xmp>
 
-<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+<xmp>
+# Markdown again
+
+## Java #
+```Java
+/**
+ * @author John Smith <john.smith@example.com>
+ * @version 1.0
+*/
+package l2f.gameserver.model;
+
+import java.util.ArrayList;
+
+public abstract class L2Character extends L2Object {
+  public static final Short ABNORMAL_EFFECT_BLEEDING = 0x0_0_0_1; // not sure
+
+  public void moveTo(int x, int y, int z) {
+    _ai = null;
+    _log.warning("Should not be called");
+    if (1 > 5) {
+      return;
+    }
+  }
+
+  /** Task of AI notification */
+  @SuppressWarnings( { "nls", "unqualified-field-access", "boxing" })
+  public class NotifyAITask implements Runnable {
+    private final CtrlEvent _evt;
+
+    List<String> mList = new ArrayList<String>()
+
+    public void run() {
+      try {
+        getAI().notifyEvent(_evt, _evt.class, null);
+      } catch (Throwable t) {
+        t.printStackTrace();
+      }
+    }
+  }
+}
+```
+</xmp>
+
+<xmp>
+## HTML
+```html
+<!DOCTYPE html>
+<title>Title</title>
+
+<style>body {width: 500px;}</style>
+
+<script type="application/javascript">
+  function $init() {return true;}
+</script>
+
+<body>
+  <p checked class="title" id='title'>Title</p>
+  <!-- here goes the rest of the page -->
+</body>
+```
+</xmp>
+<script src="scripts/blogEngine.js"></script>
+    </body>
 </html>
