@@ -1,12 +1,13 @@
 (function(window, document) {
-    var params = getSearchParameters();
     document.body.style.display = 'none';
+    
+    var params = getSearchParameters();
+    var myPosts = GetPosts();
+    
     var client = new XMLHttpRequest();
     
     var posts = document.createElement('div');
     posts.id = 'posts';
-    
-    var myPosts = GetPosts();
     
     for(var i = 0; i < myPosts.length; i++) {
         client.open("GET", 'posts/' + myPosts[i] + '.md', false);
