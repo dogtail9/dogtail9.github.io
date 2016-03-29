@@ -26,7 +26,10 @@
     var arr = [].slice.call(markdownElements);
     
     for (var i = 0; i < arr.length; i++) {
-        posts.replaceChild(convertMarkdownToHtml(arr[i]), arr[i]);
+        var newNode = convertMarkdownToHtml(arr[i]);
+        var hr = document.createElement('hr');
+        newNode.appendChild(hr);
+        posts.replaceChild(newNode, arr[i]);
     }
     
     document.body.style.display = '';
