@@ -3,6 +3,7 @@
     var client = new XMLHttpRequest();
     
     var posts = document.createElement('div');
+    posts.id = 'posts';
     
     var myPosts = GetPosts();
     
@@ -25,7 +26,7 @@
     var arr = [].slice.call(markdownElements);
     
     for (var i = 0; i < arr.length; i++) {
-        document.body.replaceChild(convertMarkdownToHtml(arr[i]), arr[i]);
+        posts.replaceChild(convertMarkdownToHtml(arr[i]), arr[i]);
     }
     
     document.body.style.display = '';
