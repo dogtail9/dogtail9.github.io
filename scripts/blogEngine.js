@@ -1,5 +1,23 @@
 (function(window, document) {
     document.body.style.display = 'none';
+    var client = new XMLHttpRequest();
+    
+    var posts = document.createElement('div');
+    
+    var myPosts = GetPosts();
+    
+    for(var i = 0; i < myPosts.length; i++) {
+        client.open("GET", myPosts[i], false);
+        client.send();
+        
+        if (client.readyState == 4 && client.status == 200) {
+            var newNode = document.createElement('xmp');
+            newNode.innerHTML = clent.responseText;
+            posts.appendChild(newNode);
+        }
+    }
+    
+    document.body.replaceChild.replaceChild(document.getElementsByTagName('posts'), posts);
     
     var markdownElements = document.getElementsByTagName('xmp');
     
@@ -26,4 +44,16 @@ function convertMarkdownToHtml(element) {
 
     //newNode.innerHTML = marked(markdown);
     return newNode;
+}
+
+function GetPosts() {
+    var client = new XMLHttpRequest();
+    client.open("GET", "posts.json", false);
+    client.send();
+    
+     if (client.readyState == 4 && client.status == 200) {
+       var myArr = JSON.parse(client.responseText);
+     }
+      
+    return myArr;
 }
