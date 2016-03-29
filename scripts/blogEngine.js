@@ -12,7 +12,7 @@
         
         if (client.readyState == 4 && client.status == 200) {
             var newNode = document.createElement('xmp');
-            newNode.innerHTML = clent.responseText;
+            newNode.innerHTML = client.responseText;
             posts.appendChild(newNode);
         }
     }
