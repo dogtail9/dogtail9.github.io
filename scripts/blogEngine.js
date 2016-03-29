@@ -1,4 +1,5 @@
 (function(window, document) {
+    var params = getSearchParameters();
     document.body.style.display = 'none';
     var client = new XMLHttpRequest();
     
@@ -61,4 +62,19 @@ function GetPosts() {
      }
       
     return myArr.posts;
+}
+
+function getSearchParameters() {
+      var prmstr = window.location.search.substr(1);
+      return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
+}
+
+function transformToAssocArray( prmstr ) {
+    var params = {};
+    var prmarr = prmstr.split("&");
+    for ( var i = 0; i < prmarr.length; i++) {
+        var tmparr = prmarr[i].split("=");
+        params[tmparr[0]] = tmparr[1];
+    }
+    return params;
 }
