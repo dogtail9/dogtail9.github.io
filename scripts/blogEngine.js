@@ -4,9 +4,9 @@
     var myPosts;
     
     var params = getSearchParameters();
-    if(params.posts)
+    if(params.post)
     {
-        myPosts = [params.posts];
+        myPosts = [params.post];
     }
     else
     {
