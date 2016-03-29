@@ -18,7 +18,7 @@
     }
     
     var placeholder = document.getElementsByTagName('posts')[0];
-    document.body.replaceChild(placeholder, posts);
+    document.body.replaceChild(posts, placeholder);
     
     var markdownElements = document.getElementsByTagName('xmp');
     
