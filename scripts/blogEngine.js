@@ -7,7 +7,7 @@
     var myPosts = GetPosts();
     
     for(var i = 0; i < myPosts.length; i++) {
-        client.open("GET", myPosts[i], false);
+        client.open("GET", 'posts/' + myPosts[i] + '.md', false);
         client.send();
         
         if (client.readyState == 4 && client.status == 200) {
