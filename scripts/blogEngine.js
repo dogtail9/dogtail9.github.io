@@ -1,8 +1,17 @@
 (function(window, document) {
     document.body.style.display = 'none';
+
+    var myPosts;
     
     var params = getSearchParameters();
-    var myPosts = GetPosts();
+    if(params.posts)
+    {
+        myPosts = [params.posts];
+    }
+    else
+    {
+        myPosts = GetPosts();
+    }
     
     var client = new XMLHttpRequest();
     
