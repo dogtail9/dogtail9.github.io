@@ -17,7 +17,7 @@
         }
     }
     
-    document.body.replaceChild(document.getElementsByTagName('posts'), posts);
+    document.body.replaceChild(document.getElementsByTagName('posts')[0], posts);
     
     var markdownElements = document.getElementsByTagName('xmp');
     
