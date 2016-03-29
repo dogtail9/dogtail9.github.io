@@ -11,7 +11,7 @@
         client.send();
         
         if (client.readyState == 4 && client.status == 200) {
-            var newNode = document.createElement('xmp');
+            var newNode = document.body.createElement('xmp');
             newNode.innerHTML = client.responseText;
             posts.appendChild(newNode);
         }
