@@ -56,5 +56,5 @@ function GetPosts() {
        var myArr = JSON.parse(client.responseText);
      }
       
-    return myArr;
+    return myArr.posts;
 }
