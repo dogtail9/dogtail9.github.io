@@ -32,7 +32,7 @@ System.register(['angular2/core', 'angular2/router', '../../services/posts/posts
         execute: function() {
             RouteComponent = (function () {
                 function RouteComponent() {
-                    this.title = 'My Blog';
+                    this.title = 'My Blog 3';
                 }
                 RouteComponent = __decorate([
                     core_1.Component({
