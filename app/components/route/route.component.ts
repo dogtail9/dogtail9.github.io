@@ -27,5 +27,5 @@ import { ListComponent } from '../list/list.component';
     useAsDefault: true
   }])
 export class RouteComponent {
-  title = 'My Blog 3';
+  title = 'My Blog';
 }
