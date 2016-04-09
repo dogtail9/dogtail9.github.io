@@ -40,7 +40,9 @@ System.register(['angular2/core', 'angular2/router', '../../services/posts/posts
                         templateUrl: 'app/components/route/route.component.html',
                         //styleUrls: ['app/components/route/route.component.css'],
                         directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [router_1.ROUTER_PROVIDERS, posts_service_1.PostService]
+                        providers: [router_1.ROUTER_PROVIDERS,
+                            core_1.provide(router_1.LocationStrategy, { useClass: router_1.HashLocationStrategy }),
+                            posts_service_1.PostService]
                     }),
                     router_1.RouteConfig([
                         {

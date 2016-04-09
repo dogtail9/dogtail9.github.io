@@ -1,5 +1,5 @@
-import { Component } from 'angular2/core';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+import { Component, provide } from 'angular2/core';
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy } from 'angular2/router';
 
 import { PostService } from '../../services/posts/posts.service';
 import { PostComponent } from '../post/post.comonent';
@@ -10,7 +10,9 @@ import { ListComponent } from '../list/list.component';
   templateUrl: 'app/components/route/route.component.html',
   //styleUrls: ['app/components/route/route.component.css'],
   directives: [ROUTER_DIRECTIVES],
-  providers: [ROUTER_PROVIDERS, PostService]
+  providers: [ROUTER_PROVIDERS,
+              provide(LocationStrategy, {useClass: HashLocationStrategy}),
+              PostService]
 })
 @RouteConfig([
   {
