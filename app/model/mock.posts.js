@@ -1,10 +1,33 @@
-System.register([], function(exports_1, context_1) {
+System.register(['./post'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var testPost, POSTS;
+    var post_1;
+    var MockRepo, testPost;
     return {
-        setters:[],
+        setters:[
+            function (post_1_1) {
+                post_1 = post_1_1;
+            }],
         execute: function() {
+            MockRepo = (function () {
+                function MockRepo() {
+                    var _this = this;
+                    var tposts = this.GetPosts();
+                    this.POSTS = new Array();
+                    tposts.forEach(function (post) {
+                        var newPost = new post_1.Post();
+                        newPost.name = post;
+                        newPost.markdown = testPost;
+                        _this.POSTS.push(newPost);
+                    });
+                }
+                MockRepo.prototype.GetPosts = function () {
+                    var myArr = { "posts": ["Post1", "Post2", "Post3", "Post4", "Post5"] };
+                    return myArr.posts;
+                };
+                return MockRepo;
+            }());
+            exports_1("MockRepo", MockRepo);
             testPost = "\
 # Markdown text goes in here \n\
 \n\
@@ -33,14 +56,14 @@ public string Test()\n\
 \n\
 Förändrat med Visual Studio \"15\" Prevew\n\
 ";
-            exports_1("POSTS", POSTS = [
-                { "name": "1", "markdown": testPost },
-                { "name": "post2", "markdown": "### Post 2" },
-                { "name": "post3", "markdown": "# Post 3" },
-                { "name": "post4", "markdown": "# Post 4" },
-                { "name": "post5", "markdown": "# Post 5" }
-            ]);
         }
     }
 });
+//export var POSTS: Post[] = [
+//    { "name": "1", "markdown": testPost },
+//    { "name": "post2", "markdown": "### Post 2" },
+//    { "name": "post3", "markdown": "# Post 3" },
+//    { "name": "post4", "markdown": "# Post 4" },
+//    { "name": "post5", "markdown": "# Post 5" }
+//];
 //# sourceMappingURL=mock.posts.js.map

@@ -13,6 +13,7 @@ System.register(['./post'], function(exports_1, context_1) {
                 function GitHubRepo() {
                     var _this = this;
                     var tposts = this.GetPosts();
+                    this.POSTS = new Array();
                     var client = new XMLHttpRequest();
                     tposts.forEach(function (post) {
                         client.open("GET", 'posts/' + post + '.md', false);

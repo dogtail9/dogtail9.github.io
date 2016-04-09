@@ -9,6 +9,7 @@ export class GitHubRepo implements IRepo {
 
     constructor() {
         var tposts = this.GetPosts();
+        this.POSTS = new Array<Post>();
 
         var client = new XMLHttpRequest();
 
