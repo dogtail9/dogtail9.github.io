@@ -1,6 +1,29 @@
 import {Post} from './post';
 
-var testPost : string = "\
+export class MockRepo {
+    POSTS: Post[];
+
+    constructor() {
+        var tposts = this.GetPosts();
+        
+        this.POSTS = new Array<Post>();
+        
+        tposts.forEach(post => {
+            var newPost = new Post();
+            newPost.name = post;
+            newPost.markdown = testPost;
+            this.POSTS.push(newPost);
+        });
+    }
+
+    GetPosts() {
+        var myArr = { "posts": ["Post1", "Post2", "Post3", "Post4", "Post5"] }
+
+        return myArr.posts;
+    }
+
+}
+var testPost: string = "\
 # Markdown text goes in here \n\
 \n\
 ## Chapter 1\n\
@@ -29,12 +52,12 @@ public string Test()\n\
 Förändrat med Visual Studio \"15\" Prevew\n\
 ";
 
-export var POSTS: Post[] = [
-    {"name": "1", "markdown": testPost},
-    {"name": "post2", "markdown": "### Post 2"},
-    {"name": "post3", "markdown": "# Post 3"},
-    {"name": "post4", "markdown": "# Post 4"},
-    {"name": "post5", "markdown": "# Post 5"}
-];
+//export var POSTS: Post[] = [
+//    { "name": "1", "markdown": testPost },
+//    { "name": "post2", "markdown": "### Post 2" },
+//    { "name": "post3", "markdown": "# Post 3" },
+//    { "name": "post4", "markdown": "# Post 4" },
+//    { "name": "post5", "markdown": "# Post 5" }
+//];
 
 
