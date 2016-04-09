@@ -45,7 +45,7 @@ System.register(['angular2/core', 'angular2/router', '../../services/posts/posts
                     core_1.Component({
                         selector: 'my-list',
                         templateUrl: 'app/components/list/list.component.html',
-                        //styleUrls: ['app/components/list/list.component.css'],
+                        styleUrls: ['app/components/list/list.component.css'],
                         directives: [markdown_component_1.MarkdownComponent]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, posts_service_1.PostService])

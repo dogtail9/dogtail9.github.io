@@ -1,6 +1,6 @@
-<div *ngFor="#post of posts">
-    <my-markdown [post] = "post"></my-markdown>
-    <hr>
-    <a (click)="gotoDetail(post)">Permalink</a>
-    <!--<button (click)="gotoDetail(post)>permalink</button>-->
+<div class="container" id="content">
+    <div id="post" *ngFor="#post of posts">
+        <my-markdown [post]="post"></my-markdown>
+        <a id="permalink" (click)="gotoDetail(post)">Permalink</a>
+    </div>
 </div>

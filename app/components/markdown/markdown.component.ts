@@ -8,7 +8,7 @@ import { Post } from '../../model/post';
 @Component({
     selector: 'my-markdown',
     templateUrl: 'app/components/markdown/markdown.component.html',
-    //styleUrls: ['app/components/list/list.component.css']
+    styleUrls: ['app/components/markdown/markdown.component.css']
 })
 export class MarkdownComponent implements OnInit {
     @Input() post: Post;

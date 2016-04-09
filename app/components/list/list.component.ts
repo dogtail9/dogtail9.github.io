@@ -8,7 +8,7 @@ import { MarkdownComponent } from '../../components/markdown/markdown.component'
 @Component({
     selector: 'my-list',
     templateUrl: 'app/components/list/list.component.html',
-    //styleUrls: ['app/components/list/list.component.css'],
+    styleUrls: ['app/components/list/list.component.css'],
     directives:[ MarkdownComponent ]
 })
 export class ListComponent implements OnInit {

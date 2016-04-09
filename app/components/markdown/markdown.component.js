@@ -44,6 +44,7 @@ System.register(['angular2/core', '../../model/post'], function(exports_1, conte
                     core_1.Component({
                         selector: 'my-markdown',
                         templateUrl: 'app/components/markdown/markdown.component.html',
+                        styleUrls: ['app/components/markdown/markdown.component.css']
                     }), 
                     __metadata('design:paramtypes', [])
                 ], MarkdownComponent);
