@@ -6,13 +6,21 @@ import {GitHubRepo} from '../../model/github.posts';
 @Injectable()
 export class PostService {
     Repo: GitHubRepo;
-    
+
     constructor() {
         this.Repo = new GitHubRepo();
     }
-    
+
     getPosts() {
         return Promise.resolve(this.Repo.POSTS);
+    }
+
+    getBrand() {
+        return Promise.resolve(this.Repo.BRAND);
+    }
+
+    getAbout() {
+        return Promise.resolve(this.Repo.ABOUT);
     }
 
     // Simulate load time

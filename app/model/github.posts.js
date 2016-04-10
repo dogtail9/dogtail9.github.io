@@ -25,6 +25,14 @@ System.register(['./post'], function(exports_1, context_1) {
                             _this.POSTS.push(newPost);
                         }
                     });
+                    client.open("GET", 'posts/about.md', false);
+                    client.send();
+                    if (client.readyState == 4 && client.status == 200) {
+                        var newPost = new post_1.Post();
+                        newPost.name = "about";
+                        newPost.markdown = client.responseText;
+                        this.ABOUT = newPost;
+                    }
                 }
                 GitHubRepo.prototype.GetPosts = function () {
                     var client = new XMLHttpRequest();
@@ -33,6 +41,7 @@ System.register(['./post'], function(exports_1, context_1) {
                     if (client.readyState == 4 && client.status == 200) {
                         var myArr = JSON.parse(client.responseText);
                     }
+                    this.BRAND = myArr.brand;
                     return myArr.posts;
                 };
                 return GitHubRepo;

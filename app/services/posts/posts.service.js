@@ -28,6 +28,12 @@ System.register(['angular2/core', '../../model/github.posts'], function(exports_
                 PostService.prototype.getPosts = function () {
                     return Promise.resolve(this.Repo.POSTS);
                 };
+                PostService.prototype.getBrand = function () {
+                    return Promise.resolve(this.Repo.BRAND);
+                };
+                PostService.prototype.getAbout = function () {
+                    return Promise.resolve(this.Repo.ABOUT);
+                };
                 // Simulate load time
                 PostService.prototype.getPostsSlowly = function () {
                     var _this = this;

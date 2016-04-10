@@ -9,7 +9,7 @@ import { MarkdownComponent } from '../../components/markdown/markdown.component'
     selector: 'my-post',
     templateUrl: 'app/components/post/post.comonent.html',
     //styleUrls: ['app/components/post/post.comonent.css'],
-    directives:[ MarkdownComponent ]
+    directives: [MarkdownComponent]
 })
 export class PostComponent implements OnInit {
     @Input() post: Post;
@@ -21,14 +21,11 @@ export class PostComponent implements OnInit {
 
     ngOnInit() {
         let name = this._routeParams.get('name');
-        this.post = this._postService.getPost2(name);
-        
-        //this._postService.getPost("post2").then(hero => this.post = hero);
-        
-        //this._postService.getHero(name).then(post => this.post = post);
-        //this._postService.getPost(1).then(post => this.post = post);
-        //this._postService.getPost(name).then(post => this.post = post);
-        //this.post = { "name": "postq", "markdown": "# Post q" };
+        if (name === "about") {
+            this._postService.getAbout().then(post => this.post = post);
+        } else {
+            this._postService.getPost(name).then(post => this.post = post);
+        }
     }
 
     goBack() {

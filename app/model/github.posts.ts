@@ -6,6 +6,8 @@ export interface IRepo {
 
 export class GitHubRepo implements IRepo {
     POSTS: Post[];
+    BRAND: string;
+    ABOUT: Post;
 
     constructor() {
         var tposts = this.GetPosts();
@@ -24,6 +26,16 @@ export class GitHubRepo implements IRepo {
                 this.POSTS.push(newPost);
             }
         });
+
+        client.open("GET", 'posts/about.md', false);
+        client.send();
+
+        if (client.readyState == 4 && client.status == 200) {
+            var newPost = new Post();
+            newPost.name = "about";
+            newPost.markdown = client.responseText;
+            this.ABOUT = newPost;
+        }
     }
 
     GetPosts() {
@@ -35,6 +47,7 @@ export class GitHubRepo implements IRepo {
             var myArr = JSON.parse(client.responseText);
         }
 
+        this.BRAND = myArr.brand;
         return myArr.posts;
     }
 }

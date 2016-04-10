@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../../services/posts/posts
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, posts_service_1, post_comonent_1, list_component_1;
+    var core_1, router_1, router_2, posts_service_1, post_comonent_1, list_component_1;
     var RouteComponent;
     return {
         setters:[
@@ -19,6 +19,7 @@ System.register(['angular2/core', 'angular2/router', '../../services/posts/posts
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+                router_2 = router_1_1;
             },
             function (posts_service_1_1) {
                 posts_service_1 = posts_service_1_1;
@@ -31,9 +32,16 @@ System.register(['angular2/core', 'angular2/router', '../../services/posts/posts
             }],
         execute: function() {
             RouteComponent = (function () {
-                function RouteComponent() {
-                    this.title = 'My Blog';
+                function RouteComponent(_postService, _router) {
+                    var _this = this;
+                    this._postService = _postService;
+                    this._router = _router;
+                    this._postService.getBrand().then(function (brand) { return _this.title = brand; });
                 }
+                RouteComponent.prototype.gotoAbout = function () {
+                    var link = ['Post', { name: "about" }];
+                    this._router.navigate(link);
+                };
                 RouteComponent = __decorate([
                     core_1.Component({
                         selector: 'my-routes',
@@ -46,17 +54,17 @@ System.register(['angular2/core', 'angular2/router', '../../services/posts/posts
                     }),
                     router_1.RouteConfig([
                         {
-                            path: '/post/:name',
+                            path: '/:name',
                             name: 'Post',
                             component: post_comonent_1.PostComponent
                         },
                         {
-                            path: '/blog',
+                            path: '/',
                             name: 'Blog',
                             component: list_component_1.ListComponent,
                             useAsDefault: true
                         }]), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [posts_service_1.PostService, router_2.Router])
                 ], RouteComponent);
                 return RouteComponent;
             }());

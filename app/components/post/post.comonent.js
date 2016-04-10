@@ -36,13 +36,14 @@ System.register(['angular2/core', 'angular2/router', '../../model/post', '../../
                     this._routeParams = _routeParams;
                 }
                 PostComponent.prototype.ngOnInit = function () {
+                    var _this = this;
                     var name = this._routeParams.get('name');
-                    this.post = this._postService.getPost2(name);
-                    //this._postService.getPost("post2").then(hero => this.post = hero);
-                    //this._postService.getHero(name).then(post => this.post = post);
-                    //this._postService.getPost(1).then(post => this.post = post);
-                    //this._postService.getPost(name).then(post => this.post = post);
-                    //this.post = { "name": "postq", "markdown": "# Post q" };
+                    if (name === "about") {
+                        this._postService.getAbout().then(function (post) { return _this.post = post; });
+                    }
+                    else {
+                        this._postService.getPost(name).then(function (post) { return _this.post = post; });
+                    }
                 };
                 PostComponent.prototype.goBack = function () {
                     window.history.back();
