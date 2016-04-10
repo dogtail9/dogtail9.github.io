@@ -1,6 +1,7 @@
 <div class="container" id="content">
     <div id="post" *ngFor="#post of posts">
         <my-markdown [post]="post"></my-markdown>
+        <hr>
         <a id="permalink" (click)="gotoDetail(post)">Permalink</a>
     </div>
 </div>
