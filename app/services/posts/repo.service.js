@@ -1,4 +1,4 @@
-System.register(['angular2/http', 'angular2/core', '../../model/blogConfig', '../../model/post', 'rxjs/Rx'], function(exports_1, context_1) {
+System.register(['angular2/http', 'angular2/core', '../../model/blogPost', '../../model/blogConfig', '../../model/post', 'rxjs/Rx'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/http', 'angular2/core', '../../model/blogConfig', '..
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var http_1, core_1, blogConfig_1, post_1;
+    var http_1, core_1, blogPost_1, blogConfig_1, post_1;
     var RepoService;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['angular2/http', 'angular2/core', '../../model/blogConfig', '..
             },
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (blogPost_1_1) {
+                blogPost_1 = blogPost_1_1;
             },
             function (blogConfig_1_1) {
                 blogConfig_1 = blogConfig_1_1;
@@ -41,7 +44,10 @@ System.register(['angular2/http', 'angular2/core', '../../model/blogConfig', '..
                         result.brand = config.brand;
                         result.posts = new Array();
                         config.posts.forEach(function (post) {
-                            result.posts.push(post);
+                            var bPost = new blogPost_1.blogPost();
+                            bPost.name = post.name;
+                            bPost.date = new Date(post.date);
+                            result.posts.push(bPost);
                         });
                         return result;
                     });
@@ -50,15 +56,20 @@ System.register(['angular2/http', 'angular2/core', '../../model/blogConfig', '..
                     var _this = this;
                     var posts = new Array();
                     config.posts.forEach(function (post) {
-                        _this.getPost(post).subscribe(function (p) {
+                        _this.getPost(post.name).subscribe(function (p) {
+                            p.date = post.date;
                             posts.push(p);
                             posts = posts.sort(function (n1, n2) {
-                                if (n1 > n2) {
+                                console.log('sorting...');
+                                if (n1.date > n2.date) {
+                                    console.log('1');
                                     return -1;
                                 }
-                                if (n1 < n2) {
+                                if (n1.date < n2.date) {
+                                    console.log('2');
                                     return 1;
                                 }
+                                console.log('3');
                                 return 0;
                             });
                         });

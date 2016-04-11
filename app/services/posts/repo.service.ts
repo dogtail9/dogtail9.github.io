@@ -1,6 +1,7 @@
 
 import { Http } from 'angular2/http';
 import {Injectable} from 'angular2/core';
+import {blogPost} from '../../model/blogPost';
 import {blogConfig} from '../../model/blogConfig';
 import {Post} from '../../model/post';
 import 'rxjs/Rx';
@@ -18,9 +19,12 @@ export class RepoService {
             .map((config) => {
                 let result: blogConfig = new blogConfig();
                 result.brand = config.brand;
-                result.posts = new Array<string>();
+                result.posts = new Array<blogPost>();
                 config.posts.forEach((post) => {
-                    result.posts.push(post);
+                    let bPost: blogPost = new blogPost();
+                    bPost.name = post.name;
+                    bPost.date = new Date(post.date);
+                    result.posts.push(bPost);
                 });
                 return result;
             });
@@ -30,17 +34,22 @@ export class RepoService {
         var posts = new Array<Post>();
 
         config.posts.forEach((post) => {
-            this.getPost(post).subscribe((p) => {
+            this.getPost(post.name).subscribe((p) => {
+                p.date = post.date;
                 posts.push(p);
                 posts = posts.sort((n1, n2) => {
-                    if (n1 > n2) {
+                    console.log('sorting...');
+                    if (n1.date > n2.date) {
+                        console.log('1');
                         return -1;
                     }
 
-                    if (n1 < n2) {
+                    if (n1.date < n2.date) {
+                        console.log('2');
                         return 1;
                     }
 
+                    console.log('3');
                     return 0;
                 });
             });
@@ -56,7 +65,7 @@ export class RepoService {
                 var post = new Post();
                 post.name = name;
                 post.markdown = markdown;
-
+                
                 return post;
             });
     }

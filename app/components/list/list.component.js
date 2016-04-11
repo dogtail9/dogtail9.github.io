@@ -38,6 +38,15 @@ System.register(['angular2/core', 'angular2/router', '../../services/posts/repo.
                     this._repoService.getConfig().subscribe(function (config) {
                         _this.posts = _this._repoService.getPosts(config);
                     });
+                    this.posts = this.posts.sort(function (n1, n2) {
+                        if (n1 > n2) {
+                            return -1;
+                        }
+                        if (n1 < n2) {
+                            return 1;
+                        }
+                        return 0;
+                    });
                 };
                 ListComponent.prototype.gotoDetail = function (post) {
                     var link = ['Post', { name: post.name }];
