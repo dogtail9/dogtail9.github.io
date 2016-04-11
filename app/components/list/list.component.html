@@ -3,6 +3,6 @@
         <my-markdown [post]="post"></my-markdown>
         <hr>
         <a id="permalink" (click)="gotoDetail(post)">Permalink</a>
-        <div>{{post.date}}</div>
+        <div>{{post.date.toLocaleDateString()}}</div>
     </div>
 </div>
