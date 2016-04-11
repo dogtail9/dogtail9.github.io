@@ -1,7 +1,7 @@
-System.register(['angular2/platform/browser', './components/route/route.component'], function(exports_1, context_1) {
+System.register(['angular2/platform/browser', './components/route/route.component', 'angular2/http'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var browser_1, route_component_1;
+    var browser_1, route_component_1, http_1;
     return {
         setters:[
             function (browser_1_1) {
@@ -9,6 +9,9 @@ System.register(['angular2/platform/browser', './components/route/route.componen
             },
             function (route_component_1_1) {
                 route_component_1 = route_component_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
             }],
         execute: function() {
             //import {ROUTER_PROVIDERS}  from 'angular2/router';
@@ -16,7 +19,7 @@ System.register(['angular2/platform/browser', './components/route/route.componen
             //import {provide}           from 'angular2/core';
             //import {LocationStrategy,
             //        HashLocationStrategy} from 'angular2/router';
-            browser_1.bootstrap(route_component_1.RouteComponent);
+            browser_1.bootstrap(route_component_1.RouteComponent, [http_1.HTTP_PROVIDERS]);
         }
     }
 });

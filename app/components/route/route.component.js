@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../../services/posts/posts.service', '../post/post.comonent', '../list/list.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../../services/posts/repo.service', '../post/post.comonent', '../list/list.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../../services/posts/posts
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, router_2, posts_service_1, post_comonent_1, list_component_1;
+    var core_1, router_1, router_2, repo_service_1, post_comonent_1, list_component_1;
     var RouteComponent;
     return {
         setters:[
@@ -21,8 +21,8 @@ System.register(['angular2/core', 'angular2/router', '../../services/posts/posts
                 router_1 = router_1_1;
                 router_2 = router_1_1;
             },
-            function (posts_service_1_1) {
-                posts_service_1 = posts_service_1_1;
+            function (repo_service_1_1) {
+                repo_service_1 = repo_service_1_1;
             },
             function (post_comonent_1_1) {
                 post_comonent_1 = post_comonent_1_1;
@@ -32,11 +32,11 @@ System.register(['angular2/core', 'angular2/router', '../../services/posts/posts
             }],
         execute: function() {
             RouteComponent = (function () {
-                function RouteComponent(_postService, _router) {
+                function RouteComponent(_repoService, _router) {
                     var _this = this;
-                    this._postService = _postService;
+                    this._repoService = _repoService;
                     this._router = _router;
-                    this._postService.getBrand().then(function (brand) { return _this.title = brand; });
+                    this._repoService.getConfig().subscribe(function (config) { return _this.title = config.brand; });
                 }
                 RouteComponent.prototype.gotoAbout = function () {
                     var link = ['Post', { name: "about" }];
@@ -50,7 +50,7 @@ System.register(['angular2/core', 'angular2/router', '../../services/posts/posts
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [router_1.ROUTER_PROVIDERS,
                             core_1.provide(router_1.LocationStrategy, { useClass: router_1.HashLocationStrategy }),
-                            posts_service_1.PostService]
+                            repo_service_1.RepoService]
                     }),
                     router_1.RouteConfig([
                         {
@@ -64,7 +64,7 @@ System.register(['angular2/core', 'angular2/router', '../../services/posts/posts
                             component: list_component_1.ListComponent,
                             useAsDefault: true
                         }]), 
-                    __metadata('design:paramtypes', [posts_service_1.PostService, router_2.Router])
+                    __metadata('design:paramtypes', [repo_service_1.RepoService, router_2.Router])
                 ], RouteComponent);
                 return RouteComponent;
             }());

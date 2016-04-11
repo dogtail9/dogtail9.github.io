@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../../model/post', '../../services/posts/posts.service', '../../components/markdown/markdown.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../../model/post', '../../services/posts/repo.service', '../../components/markdown/markdown.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../../model/post', '../../
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, post_1, posts_service_1, markdown_component_1;
+    var core_1, router_1, post_1, repo_service_1, markdown_component_1;
     var PostComponent;
     return {
         setters:[
@@ -23,27 +23,22 @@ System.register(['angular2/core', 'angular2/router', '../../model/post', '../../
             function (post_1_1) {
                 post_1 = post_1_1;
             },
-            function (posts_service_1_1) {
-                posts_service_1 = posts_service_1_1;
+            function (repo_service_1_1) {
+                repo_service_1 = repo_service_1_1;
             },
             function (markdown_component_1_1) {
                 markdown_component_1 = markdown_component_1_1;
             }],
         execute: function() {
             PostComponent = (function () {
-                function PostComponent(_postService, _routeParams) {
-                    this._postService = _postService;
+                function PostComponent(_repoService, _routeParams) {
+                    this._repoService = _repoService;
                     this._routeParams = _routeParams;
                 }
                 PostComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     var name = this._routeParams.get('name');
-                    if (name === "about") {
-                        this._postService.getAbout().then(function (post) { return _this.post = post; });
-                    }
-                    else {
-                        this._postService.getPost(name).then(function (post) { return _this.post = post; });
-                    }
+                    this._repoService.getPost(name).subscribe(function (post) { return _this.post = post; });
                 };
                 PostComponent.prototype.goBack = function () {
                     window.history.back();
@@ -59,7 +54,7 @@ System.register(['angular2/core', 'angular2/router', '../../model/post', '../../
                         //styleUrls: ['app/components/post/post.comonent.css'],
                         directives: [markdown_component_1.MarkdownComponent]
                     }), 
-                    __metadata('design:paramtypes', [posts_service_1.PostService, router_1.RouteParams])
+                    __metadata('design:paramtypes', [repo_service_1.RepoService, router_1.RouteParams])
                 ], PostComponent);
                 return PostComponent;
             }());

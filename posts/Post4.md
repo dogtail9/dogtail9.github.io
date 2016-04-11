@@ -13,9 +13,9 @@ culpa qui officia deserunt mollit anim id est laborum.
 ```cs
 public string Test()
 {
-    //Comment\n\
-    int i = 0;\n\
-    return string.Format(\"The number is {0}\", i);\n\
+    //Comment
+    int i = 0;
+    return string.Format(\"The number is {0}\", i);
 }
 ```
 Förändrat med Visual Studio "15" Prevew

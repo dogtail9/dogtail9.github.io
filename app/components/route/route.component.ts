@@ -2,7 +2,7 @@ import { Component, provide } from 'angular2/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy } from 'angular2/router';
 import { Router } from 'angular2/router';
 
-import { PostService } from '../../services/posts/posts.service';
+import { RepoService } from '../../services/posts/repo.service';
 import { PostComponent } from '../post/post.comonent';
 import { ListComponent } from '../list/list.component';
 import { Post } from '../../model/post';
@@ -14,7 +14,7 @@ import { Post } from '../../model/post';
   directives: [ROUTER_DIRECTIVES],
   providers: [ROUTER_PROVIDERS,
     provide(LocationStrategy, { useClass: HashLocationStrategy }),
-    PostService]
+    RepoService]
 })
 @RouteConfig([
   {
@@ -31,8 +31,8 @@ import { Post } from '../../model/post';
 export class RouteComponent {
   title: string;
 
-  constructor(private _postService: PostService, private _router: Router) {
-    this._postService.getBrand().then(brand => this.title = brand);
+  constructor(private _repoService: RepoService, private _router: Router) {
+    this._repoService.getConfig().subscribe(config => this.title = config.brand);
   }
 
   gotoAbout() {

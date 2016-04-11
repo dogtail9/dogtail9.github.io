@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from 'angular2/core';
 import { RouteParams } from 'angular2/router';
 
 import { Post } from '../../model/post';
-import { PostService } from '../../services/posts/posts.service';
+import { RepoService } from '../../services/posts/repo.service';
 import { MarkdownComponent } from '../../components/markdown/markdown.component';
 
 @Component({
@@ -15,17 +15,13 @@ export class PostComponent implements OnInit {
     @Input() post: Post;
 
     constructor(
-        private _postService: PostService,
+        private _repoService: RepoService,
         private _routeParams: RouteParams) {
     }
 
     ngOnInit() {
         let name = this._routeParams.get('name');
-        if (name === "about") {
-            this._postService.getAbout().then(post => this.post = post);
-        } else {
-            this._postService.getPost(name).then(post => this.post = post);
-        }
+        this._repoService.getPost(name).subscribe(post => this.post = post);
     }
 
     goBack() {

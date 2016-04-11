@@ -1,62 +1,43 @@
-System.register(['angular2/core', '../../model/github.posts'], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-    };
-    var __metadata = (this && this.__metadata) || function (k, v) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-    };
-    var core_1, github_posts_1;
-    var PostService;
-    return {
-        setters:[
-            function (core_1_1) {
-                core_1 = core_1_1;
-            },
-            function (github_posts_1_1) {
-                github_posts_1 = github_posts_1_1;
-            }],
-        execute: function() {
-            PostService = (function () {
-                function PostService() {
-                    this.Repo = new github_posts_1.GitHubRepo();
-                }
-                PostService.prototype.getPosts = function () {
-                    return Promise.resolve(this.Repo.POSTS);
-                };
-                PostService.prototype.getBrand = function () {
-                    return Promise.resolve(this.Repo.BRAND);
-                };
-                PostService.prototype.getAbout = function () {
-                    return Promise.resolve(this.Repo.ABOUT);
-                };
-                // Simulate load time
-                PostService.prototype.getPostsSlowly = function () {
-                    var _this = this;
-                    return new Promise(function (resolve) {
-                        return setTimeout(function () { return resolve(_this.Repo.POSTS); }, 2000);
-                    } // 2 seconds
-                     // 2 seconds
-                    );
-                };
-                PostService.prototype.getPost = function (name) {
-                    return Promise.resolve(this.Repo.POSTS).then(function (posts) { return posts.filter(function (post) { return post.name === name; })[0]; });
-                };
-                PostService.prototype.getPost2 = function (name) {
-                    return this.Repo.POSTS.filter(function (post) { return post.name === name; })[0];
-                };
-                PostService = __decorate([
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
-                ], PostService);
-                return PostService;
-            }());
-            exports_1("PostService", PostService);
-        }
-    }
-});
+//import {Injectable} from 'angular2/core';
+//
+//import {Post} from '../../model/post';
+//import {GitHubRepo} from '../../model/github.posts';
+//
+//@Injectable()
+//export class PostService {
+//    Repo: GitHubRepo;
+//
+//    constructor() {
+//        this.Repo = new GitHubRepo();
+//    }
+//
+//    getPosts() {
+//        return Promise.resolve(this.Repo.POSTS);
+//    }
+//
+//    getBrand() {
+//        return Promise.resolve(this.Repo.BRAND);
+//    }
+//
+//    getAbout() {
+//        return Promise.resolve(this.Repo.ABOUT);
+//    }
+//
+//    // Simulate load time
+//    getPostsSlowly() {
+//        return new Promise<Post[]>(resolve =>
+//            setTimeout(() => resolve(this.Repo.POSTS), 2000) // 2 seconds
+//        );
+//    }
+//
+//    getPost(name: string) {
+//        return Promise.resolve(this.Repo.POSTS).then(
+//            posts => posts.filter(post => post.name === name)[0]
+//        );
+//    }
+//
+//    getPost2(name: string) {
+//        return this.Repo.POSTS.filter(post => post.name === name)[0];
+//    }
+//} 
 //# sourceMappingURL=posts.service.js.map

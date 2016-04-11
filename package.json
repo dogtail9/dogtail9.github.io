@@ -6,7 +6,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lite": "lite-server",
-    "lite:c": "lite-server --open chrome",
+    "lite:c": "lite-server --c bs-chrome.json",
     "typings": "typings",
     "postinstall": "typings install" 
   },
