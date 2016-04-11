@@ -20,18 +20,18 @@ export class ListComponent implements OnInit {
         this._repoService.getConfig().subscribe((config) => {
             this.posts = this._repoService.getPosts(config);
         });
-        
+
         this.posts = this.posts.sort((n1, n2) => {
-                    if (n1 > n2) {
-                        return -1;
-                    }
+            if (n1 > n2) {
+                return -1;
+            }
 
-                    if (n1 < n2) {
-                        return 1;
-                    }
+            if (n1 < n2) {
+                return 1;
+            }
 
-                    return 0;
-                });
+            return 0;
+        });
     }
 
     gotoDetail(post: Post) {
