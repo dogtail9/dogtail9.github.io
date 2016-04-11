@@ -50,7 +50,18 @@ System.register(['angular2/http', 'angular2/core', '../../model/blogConfig', '..
                     var _this = this;
                     var posts = new Array();
                     config.posts.forEach(function (post) {
-                        _this.getPost(post).subscribe(function (p) { return posts.push(p); });
+                        _this.getPost(post).subscribe(function (p) {
+                            posts.push(p);
+                            posts = posts.sort(function (n1, n2) {
+                                if (n1 > n2) {
+                                    return -1;
+                                }
+                                if (n1 < n2) {
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                        });
                     });
                     return posts;
                 };

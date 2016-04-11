@@ -30,9 +30,22 @@ export class RepoService {
         var posts = new Array<Post>();
 
         config.posts.forEach((post) => {
-            this.getPost(post).subscribe((p) => posts.push(p));
+            this.getPost(post).subscribe((p) => {
+                posts.push(p);
+                posts = posts.sort((n1, n2) => {
+                    if (n1 > n2) {
+                        return -1;
+                    }
+
+                    if (n1 < n2) {
+                        return 1;
+                    }
+
+                    return 0;
+                });
+            });
         });
-        
+
         return posts;
     }
 
