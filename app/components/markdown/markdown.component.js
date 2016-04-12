@@ -27,8 +27,6 @@ System.register(['angular2/core', '../../model/post'], function(exports_1, conte
                 MarkdownComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     var md = this.post.markdown;
-                    console.log(md);
-                    //this.markdownHtml = this.convertToMarkdown(md);
                     this.convertToMarkdown(md).then(function (text) { return _this.markdownHtml = text; });
                 };
                 MarkdownComponent.prototype.convertToMarkdown = function (md) {
@@ -37,11 +35,6 @@ System.register(['angular2/core', '../../model/post'], function(exports_1, conte
                             return hljs.highlightAuto(code).value;
                         }
                     }));
-                    //return marked(md, {
-                    //    highlight: function (code) {
-                    //        return hljs.highlightAuto(code).value;
-                    //    }
-                    //})
                 };
                 __decorate([
                     core_1.Input(), 

@@ -60,16 +60,12 @@ System.register(['angular2/http', 'angular2/core', '../../model/blogPost', '../.
                             p.date = post.date;
                             posts.push(p);
                             posts = posts.sort(function (n1, n2) {
-                                console.log('sorting...');
                                 if (n1.date > n2.date) {
-                                    console.log('1');
                                     return -1;
                                 }
                                 if (n1.date < n2.date) {
-                                    console.log('2');
                                     return 1;
                                 }
-                                console.log('3');
                                 return 0;
                             });
                         });

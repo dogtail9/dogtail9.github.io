@@ -16,8 +16,6 @@ export class MarkdownComponent implements OnInit {
 
     ngOnInit() {
         var md = this.post.markdown;
-        console.log(md);
-        //this.markdownHtml = this.convertToMarkdown(md);
         this.convertToMarkdown(md).then(text => this.markdownHtml = text);
     }
 
@@ -28,10 +26,5 @@ export class MarkdownComponent implements OnInit {
                     return hljs.highlightAuto(code).value;
                 }
             }));
-        //return marked(md, {
-        //    highlight: function (code) {
-        //        return hljs.highlightAuto(code).value;
-        //    }
-        //})
     }
 }

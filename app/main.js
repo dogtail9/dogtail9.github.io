@@ -14,11 +14,6 @@ System.register(['angular2/platform/browser', './components/route/route.componen
                 http_1 = http_1_1;
             }],
         execute: function() {
-            //import {ROUTER_PROVIDERS}  from 'angular2/router';
-            // Add these symbols to override the `LocationStrategy`
-            //import {provide}           from 'angular2/core';
-            //import {LocationStrategy,
-            //        HashLocationStrategy} from 'angular2/router';
             browser_1.bootstrap(route_component_1.RouteComponent, [http_1.HTTP_PROVIDERS]);
         }
     }
