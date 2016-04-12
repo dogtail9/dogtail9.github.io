@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../../services/posts/repo.service', '../post/post.comonent', '../list/list.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../../services/posts/repo.service', '../post/post.comonent', '../list/list.component', '../search/search.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../../services/posts/repo.
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, router_2, repo_service_1, post_comonent_1, list_component_1;
+    var core_1, router_1, router_2, repo_service_1, post_comonent_1, list_component_1, search_component_1;
     var RouteComponent;
     return {
         setters:[
@@ -29,6 +29,9 @@ System.register(['angular2/core', 'angular2/router', '../../services/posts/repo.
             },
             function (list_component_1_1) {
                 list_component_1 = list_component_1_1;
+            },
+            function (search_component_1_1) {
+                search_component_1 = search_component_1_1;
             }],
         execute: function() {
             RouteComponent = (function () {
@@ -47,7 +50,7 @@ System.register(['angular2/core', 'angular2/router', '../../services/posts/repo.
                         selector: 'my-routes',
                         templateUrl: 'app/components/route/route.component.html',
                         //styleUrls: ['app/components/route/route.component.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES],
+                        directives: [router_1.ROUTER_DIRECTIVES, search_component_1.SearchComponent],
                         providers: [router_1.ROUTER_PROVIDERS,
                             core_1.provide(router_1.LocationStrategy, { useClass: router_1.HashLocationStrategy }),
                             repo_service_1.RepoService]

@@ -5,13 +5,14 @@ import { Router } from 'angular2/router';
 import { RepoService } from '../../services/posts/repo.service';
 import { PostComponent } from '../post/post.comonent';
 import { ListComponent } from '../list/list.component';
+import { SearchComponent } from '../search/search.component';
 import { Post } from '../../model/post';
 
 @Component({
   selector: 'my-routes',
   templateUrl: 'app/components/route/route.component.html',
   //styleUrls: ['app/components/route/route.component.css'],
-  directives: [ROUTER_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES, SearchComponent],
   providers: [ROUTER_PROVIDERS,
     provide(LocationStrategy, { useClass: HashLocationStrategy }),
     RepoService]
